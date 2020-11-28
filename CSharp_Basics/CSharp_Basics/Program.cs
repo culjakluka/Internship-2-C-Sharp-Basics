@@ -50,9 +50,9 @@ namespace CSharp_Basics
         }
         static void IspisListe(Dictionary<int, string> dict) 
         {
-            foreach (var song in dict)
+            for (int i = 1; i < dict.Count + 1; i++)
             {
-                Console.WriteLine(song.Key + ". " + song.Value);
+                Console.WriteLine(i + ", " + dict[i]); ;
             }
         }
         static void IspisPoBroju(Dictionary<int, string> dict)
@@ -258,7 +258,11 @@ namespace CSharp_Basics
                 {
                     foreach (var song in dict)
                     {
-                        if (song.Key == index)
+                        if (song.Key < index)
+                        {
+                            counter++;
+                        }
+                        else if (song.Key == index)
                         {
                             tempKey1 = song.Key;
                             tempName1 = song.Value;
@@ -300,6 +304,10 @@ namespace CSharp_Basics
                 {
                     foreach (var song in dict)
                     {
+                        if (song.Key < newIndex)
+                        {
+                            counter++;
+                        }
                         if (song.Key == index)
                         {
                             tempKey1 = song.Key;
@@ -324,14 +332,14 @@ namespace CSharp_Basics
                         }
                     }
                     counter++;
-                    dict.Add(counter, tempName2);
+                    dict.Add(counter, tempName1);
                     foreach (var song in tempDictBetween)
                     {
                         counter++;
                         dict.Add(counter, song.Value);
                     }
                     counter++;
-                    dict.Add(counter, tempName1);
+                    dict.Add(counter, tempName2);
                     foreach (var song in tempDictAfter)
                     {
                         counter++;
